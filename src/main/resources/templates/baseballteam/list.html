@@ -7,7 +7,7 @@
 <body>
     <h2>チーム一覧</h2>
     <ul th:each="team:${BaseBallTeam}">
-        <li><a th:href="@{/baseball/detail/{id}(id=${team.id})}"><span th:text="${team.teamName}"></span></a></li>
+        <li style="list-style: none;"><a th:href="@{/baseball/detail/{id}(id=${team.id})}"><span th:text="${team.teamName}"></span></a></li>
     </ul>
 </body>
 </html>
