@@ -8,9 +8,9 @@
 <body>
 <div class="container">
     <div class="form-group">
-        <form th:action="@{/search-hotel/result}" th:object="${searchHotelForm}">
+        <form id="price_form" th:action="@{/search-hotel/result}" th:object="${searchHotelForm}">
             <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="alert alert-danger" ></div>
-            <input type="text" class="form-control" th:field="*{price}"><span>円以下</span><br/>
+            <input type="text" class="form-control" id="price" th:field="*{price}"><span>円以下</span><br/>
             <button class="btn btn-primary">検索</button>
         </form>
     </div>
@@ -31,7 +31,5 @@
     </table>
     <br/>
 </div>
-
-
 </body>
 </html>

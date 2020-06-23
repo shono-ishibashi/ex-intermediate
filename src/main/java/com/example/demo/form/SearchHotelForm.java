@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 public class SearchHotelForm {
-    @Pattern(regexp = "\\d{0,8}",message = "8桁までの数値を入力してください")
+    @Pattern(regexp = "\\d{0,8}|[０-９]{0,8}",message = "8桁までの数値を入力してください")
     private String price;
 
     public String getPrice() {

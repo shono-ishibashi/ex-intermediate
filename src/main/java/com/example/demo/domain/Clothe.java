@@ -1,12 +1,25 @@
 package com.example.demo.domain;
 
-public class Clothes {
+public class Clothe {
     private Integer id;
     private String category;
     private String gender;
     private String color;
     private String price;
     private String size;
+
+
+    @Override
+    public String toString() {
+        return "Clothe{" +
+                "id=" + id +
+                ", category='" + category + '\'' +
+                ", gender='" + gender + '\'' +
+                ", color='" + color + '\'' +
+                ", price='" + price + '\'' +
+                ", size='" + size + '\'' +
+                '}';
+    }
 
     public Integer getId() {
         return id;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <form th:action="@{/clothe-search/result}" th:object="${searchClothesForm}" method="POST">
+            <div class="form-group">
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+                <div  class="form-control form-check-inline">
+                <input type="radio" name="gender" id="man" value="0" th:field="*{gender}"><label class="form-check-label" for="man">Man</label><br/>
+                <input type="radio" name="gender" id="woman" value="1" th:field="*{gender}"><label class="form-check-label" for="woman">Woman</label>
+                </div>
+                <br/>
+                <div th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></div>
+                <label>
+                    <select class="form-control" th:field="*{color}">
+                        <option th:each="colorInput:${colorListInput}" th:text="${colorInput}" th:value="${colorInput}">
+                    </select>
+                </label>
+                <br/>
+                <button class="btn btn-primary">検索</button>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="alert alert-warning" role="alert" th:if="${isEmpty}"><strong>一致するデータが存在しません</strong></div>
+        <table th:each="clothe,stat:${clotheList}" class="table table-hover table-bordered">
+            <tr>
+                <th style="width:50%">ジャンル</th>
+                <td style="width:50%" th:text="${clothe.category}"></td>
+            </tr>
+            <tr>
+                <th style="width:50%">サイズ</th>
+                <td style="width:50%" th:text="${clothe.size}"></td>
+            </tr>
+            <tr>
+                <th style="width:50%">価格</th>
+                <td style="width:50%" th:text="${#numbers.formatInteger(clothe.price,1,'COMMA')}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
